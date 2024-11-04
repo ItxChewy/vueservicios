@@ -14,8 +14,8 @@
 </template>
 
 <script>
-import axios from "axios";
-import Global from "../Global";
+import ServiceCoche from '../services/ServiceCoches'
+const service = new ServiceCoche()
 export default {
   name: "CochesComponent",
   data(){
@@ -24,10 +24,10 @@ export default {
     }
   },
   mounted(){
-    let request ="webresources/coches"
-    axios.get(Global.urlApiCoches + request).then(response =>{
-        this.coches = response.data
+    service.getCoches.then(result=>{
+      this.coches = result
     })
+
   }
 };
 </script>
